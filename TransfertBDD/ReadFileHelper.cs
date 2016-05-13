@@ -8,5 +8,9 @@ namespace TransfertBDD
 {
     class ReadFileHelper
     {
+        public void TEst()
+        {
+
+        }
     }
 }
