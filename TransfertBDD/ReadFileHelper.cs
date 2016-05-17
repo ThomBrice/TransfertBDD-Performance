@@ -38,7 +38,7 @@ namespace TransfertBDD
         }
 
         /// <summary>
-        /// Extrais le nom du client
+        /// Extrait le nom du client
         /// </summary>
         /// <param name="content"></param>
         /// <returns> un string : le nom du client</returns>

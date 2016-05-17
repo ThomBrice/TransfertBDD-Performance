@@ -56,7 +56,6 @@ namespace TransfertBDD
         /// <summary>
         /// Ajoute un client à la BDD
         /// </summary>
-        /// <param name="connexion"></param>
         /// <param name="client"></param>
         public void AddClient(String client)
         {
@@ -79,7 +78,14 @@ namespace TransfertBDD
                 SqlCommand cmd = new SqlCommand(query, connexionClient);
                 SqlDataAdapter adapteur = new SqlDataAdapter(cmd);
                 adapteur.Fill(MyDataSet, "Clients");
+                this.CloseConnexion(connexionClient);
             }
+        }
+
+        public void UpdateBDDClient()
+        {
+            SqlDataAdapter adapteur = new SqlDataAdapter();
+            adapteur.Update(MyDataSet, "Clients");
         }
     }
 }

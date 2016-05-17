@@ -16,17 +16,18 @@ namespace TransfertBDD
         #region variables
         Functions fonction = new Functions();
         SQLHelper SqlHelper = new SQLHelper();
+        ReadFileHelper FileHelper = new ReadFileHelper();
         #endregion
 
         public Form1()
         {
             InitializeComponent();
+        }
 
-
-
-            #region remplissage de la Liste de client
-            ReadFileHelper helper = new ReadFileHelper();
-            foreach (var adress in helper.FindFiles())
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            #region remplissage de la Liste de fichiers
+            foreach (var adress in FileHelper.FindFiles())
             {
                 listOfFiles.Items.Add(adress);
             }
@@ -36,17 +37,31 @@ namespace TransfertBDD
             SqlHelper.UpdateDataSetClient();
             #endregion
 
+            #region remplissage de la liste de clients
+            listOfClient.DataSource = SqlHelper.MyDataSet.Tables["Clients"];
+            listOfClient.DisplayMember = "Client";
+            listOfClient.Text = "Liste des clients";
+            #endregion
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ReadFileHelper helper = new ReadFileHelper();
 
             try {
-                clientName.Text = helper.ExtractClient(helper.Read(listOfFiles.Text));
-                if (!fonction.CheckClient(SqlHelper.MyDataSet, clientName.Text))
+                if (!fonction.CheckClient(SqlHelper.MyDataSet, FileHelper.ExtractClient(FileHelper.Read(listOfFiles.Text))))
                 {
-                    MessageBox.Show("le client n'existe pas");
+                    var result = MessageBox.Show("Le client n'existe pas. Voulez-vous l'ajouter?","Attention!", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    if(result == DialogResult.Yes)
+                    {
+                        SqlHelper.AddClient(FileHelper.ExtractClient(FileHelper.Read(listOfFiles.Text)));
+                        SqlHelper.MyDataSet.Tables["Clients"].Clear();
+                        SqlHelper.UpdateDataSetClient();
+                        listOfClient.Text = FileHelper.ExtractClient(FileHelper.Read(listOfFiles.Text));
+                    }
+                }
+                else
+                {
+                    listOfClient.Text = FileHelper.ExtractClient(FileHelper.Read(listOfFiles.Text));
                 }
             }
             catch

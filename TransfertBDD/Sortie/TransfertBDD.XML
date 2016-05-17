@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TransfertBDD</name>
+    </assembly>
+    <members>
+        <member name="F:TransfertBDD.Form1.components">
+            <summary>
+            Variable nécessaire au concepteur.
+            </summary>
+        </member>
+        <member name="M:TransfertBDD.Form1.Dispose(System.Boolean)">
+            <summary>
+            Nettoyage des ressources utilisées.
+            </summary>
+            <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        </member>
+        <member name="M:TransfertBDD.Form1.InitializeComponent">
+            <summary>
+            Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+            le contenu de cette méthode avec l'éditeur de code.
+            </summary>
+        </member>
+        <member name="M:TransfertBDD.Program.Main">
+            <summary>
+            Point d'entrée principal de l'application.
+            </summary>
+        </member>
+        <member name="M:TransfertBDD.ReadFileHelper.FindFiles">
+            <summary>
+            Selectionne tous les fichiers .txt contenus dans un repertoire donné.
+            </summary>
+            <returns> Une liste de string qui sont les noms des fichiers</returns>
+        </member>
+        <member name="M:TransfertBDD.ReadFileHelper.Read(System.String)">
+            <summary>
+            Read each line of the file into a string array. Each element of the array is one line of the file.
+            </summary>
+            <param name="FileName"></param>
+            <returns> tableau de String correspondant aux lignes du fichier.txt</returns>
+        </member>
+        <member name="M:TransfertBDD.ReadFileHelper.ExtractClient(System.String[])">
+            <summary>
+            Extrait le nom du client
+            </summary>
+            <param name="content"></param>
+            <returns> un string : le nom du client</returns>
+        </member>
+        <member name="M:TransfertBDD.SQLHelper.OpenConnexion(System.Data.SqlClient.SqlConnection)">
+            <summary>
+            Ouvre la connexion avec la BDD
+            </summary>
+            <param name="connexion"></param>
+            <returns> Boolean pour savoir si la connexion est établie</returns>
+        </member>
+        <member name="M:TransfertBDD.SQLHelper.CloseConnexion(System.Data.SqlClient.SqlConnection)">
+            <summary>
+            Ferme la connexion avec la BDD
+            </summary>
+            <param name="connexion"></param>
+            <returns>Boolean pour savoir si la connexion est bien fermée</returns>
+        </member>
+        <member name="M:TransfertBDD.SQLHelper.AddClient(System.String)">
+            <summary>
+            Ajoute un client à la BDD
+            </summary>
+            <param name="client"></param>
+        </member>
+        <member name="T:TransfertBDD.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:TransfertBDD.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:TransfertBDD.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+    </members>
+</doc>
