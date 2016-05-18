@@ -13,6 +13,7 @@ namespace TransfertBDD
         #region variables;
         public DataSet MyDataSet = new DataSet();
         SqlConnection connexionClient = new SqlConnection(Properties.Settings.Default.StrConnClient);
+        SqlConnection connexionBanc = new SqlConnection(Properties.Settings.Default.StrConnDonn);
         #endregion;
 
         /// <summary>
@@ -69,6 +70,9 @@ namespace TransfertBDD
             }
         }
 
+        /// <summary>
+        /// Remplit le Dataset avec les données clients de la BDD Connexion Client
+        /// </summary>
         public void UpdateDataSetClient()
         {
             String query = "Select * from Clients";
@@ -82,10 +86,19 @@ namespace TransfertBDD
             }
         }
 
-        public void UpdateBDDClient()
+        public bool SaveEntete(String Client,String Signal,int Dbv,int Cbv,int Chv,String Remarques)
         {
-            SqlDataAdapter adapteur = new SqlDataAdapter();
-            adapteur.Update(MyDataSet, "Clients");
+            String query = "Insert Into Entête(Date,Client,Signal,[Détente Basse Vitesse]," +
+                "[Compression Basse Vitesse],[Compression Haute Vitesse],Remarques) Values" +
+                "(GETDATE(),'" + Client + "','" + Signal + "'," + Dbv + "," + Cbv + "," + Chv + ",'" + Remarques + "')";
+            if (this.OpenConnexion(connexionBanc) == true)
+            {
+                SqlCommand cmd = new SqlCommand(query, connexionBanc);
+                cmd.ExecuteNonQuery();
+                this.CloseConnexion(connexionBanc);
+                return true;
+            }
+            return false;
         }
     }
 }

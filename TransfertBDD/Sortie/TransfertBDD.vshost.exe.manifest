@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TransfertBDD.exe" size="74712">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TransfertBDD.exe" size="79320">
       <assemblyIdentity name="TransfertBDD" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>B+qFp/VcuCUhhL680wXEpW4H7b1uYr4fUpN7hPkf808=</dsig:DigestValue>
+        <dsig:DigestValue>Xh+eb8uFDeD2KSe1sXsxD6Quz7MVSCkKNPvVgj8tTBw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

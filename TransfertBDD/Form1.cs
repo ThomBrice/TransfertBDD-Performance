@@ -69,5 +69,24 @@ namespace TransfertBDD
                 MessageBox.Show("Un probléme réside avec votre fichier txt","Attention!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String Client = listOfClient.Text;
+            String Signal = SignalBox.Text;
+            int Dbv = int.Parse(DbvBox.Text);
+            int Cbv = int.Parse(CbvBox.Text);
+            int Chv = int.Parse(ChvBox.Text);
+            String Remarques = remarqueBox.Text;
+
+            if(SqlHelper.SaveEntete(Client,Signal,Dbv,Cbv,Chv,Remarques) == true)
+            {
+                MessageBox.Show("Transfert vers la BDD réussi!", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Le transfert à échoué, vérifiez votre connexion au réseau", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

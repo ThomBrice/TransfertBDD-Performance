@@ -66,6 +66,11 @@
             </summary>
             <param name="client"></param>
         </member>
+        <member name="M:TransfertBDD.SQLHelper.UpdateDataSetClient">
+            <summary>
+            Remplit le Dataset avec les données clients de la BDD Connexion Client
+            </summary>
+        </member>
         <member name="T:TransfertBDD.Properties.Resources">
             <summary>
               Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
