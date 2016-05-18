@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace TransfertBDD
 {
@@ -17,6 +18,7 @@ namespace TransfertBDD
         Functions fonction = new Functions();
         SQLHelper SqlHelper = new SQLHelper();
         ReadFileHelper FileHelper = new ReadFileHelper();
+        SqlConnection connexionBanc = new SqlConnection(Properties.Settings.Default.StrConnDonn);
         #endregion
 
         public Form1()
@@ -48,20 +50,21 @@ namespace TransfertBDD
         {
 
             try {
-                if (!fonction.CheckClient(SqlHelper.MyDataSet, FileHelper.ExtractClient(FileHelper.Read(listOfFiles.Text))))
+                FileHelper.Read(listOfFiles.Text);
+                if (!fonction.CheckClient(SqlHelper.MyDataSet, FileHelper.ExtractClient()))
                 {
                     var result = MessageBox.Show("Le client n'existe pas. Voulez-vous l'ajouter?","Attention!", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                     if(result == DialogResult.Yes)
                     {
-                        SqlHelper.AddClient(FileHelper.ExtractClient(FileHelper.Read(listOfFiles.Text)));
+                        SqlHelper.AddClient(FileHelper.ExtractClient());
                         SqlHelper.MyDataSet.Tables["Clients"].Clear();
                         SqlHelper.UpdateDataSetClient();
-                        listOfClient.Text = FileHelper.ExtractClient(FileHelper.Read(listOfFiles.Text));
+                        listOfClient.Text = FileHelper.ExtractClient();
                     }
                 }
                 else
                 {
-                    listOfClient.Text = FileHelper.ExtractClient(FileHelper.Read(listOfFiles.Text));
+                    listOfClient.Text = FileHelper.ExtractClient();
                 }
             }
             catch
@@ -72,6 +75,7 @@ namespace TransfertBDD
 
         private void button1_Click(object sender, EventArgs e)
         {
+            #region remplissage de l'entête
             String Client = listOfClient.Text;
             String Signal = SignalBox.Text;
             int Dbv = int.Parse(DbvBox.Text);
@@ -79,14 +83,32 @@ namespace TransfertBDD
             int Chv = int.Parse(ChvBox.Text);
             String Remarques = remarqueBox.Text;
 
+            Cursor.Current = Cursors.WaitCursor;  // on met un curseur d'attente
+
             if(SqlHelper.SaveEntete(Client,Signal,Dbv,Cbv,Chv,Remarques) == true)
             {
+                #region remplissage des données
+                if (SqlHelper.OpenConnexion(connexionBanc) == true)
+                {
+                    int size = FileHelper.content.Length - 4;
+                    for (int i = 16; i < size; i++)
+                    {
+                        String[] datas = FileHelper.ExtractionValeurs(i);
+                        SqlHelper.SaveData(datas,7,connexionBanc);
+                    }
+                }
+                SqlHelper.CloseConnexion(connexionBanc);
+                #endregion
+
                 MessageBox.Show("Transfert vers la BDD réussi!", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Le transfert à échoué, vérifiez votre connexion au réseau", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            #endregion
+
+            Cursor.Current = Cursors.WaitCursor; // on remet le curseur normal
         }
     }
 }

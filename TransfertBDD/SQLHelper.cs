@@ -21,7 +21,7 @@ namespace TransfertBDD
         /// </summary>
         /// <param name="connexion"></param>
         /// <returns> Boolean pour savoir si la connexion est établie</returns>
-        private bool OpenConnexion(SqlConnection connexion)
+        public bool OpenConnexion(SqlConnection connexion)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace TransfertBDD
         /// </summary>
         /// <param name="connexion"></param>
         /// <returns>Boolean pour savoir si la connexion est bien fermée</returns>
-        private bool CloseConnexion(SqlConnection connexion)
+        public bool CloseConnexion(SqlConnection connexion)
         {
             try
             {
@@ -86,11 +86,22 @@ namespace TransfertBDD
             }
         }
 
+        /// <summary>
+        /// Enregistre les données de l'entête dans la BDD Banc Hydraulique
+        /// </summary>
+        /// <param name="Client"></param>
+        /// <param name="Signal"></param>
+        /// <param name="Dbv"></param>
+        /// <param name="Cbv"></param>
+        /// <param name="Chv"></param>
+        /// <param name="Remarques"></param>
+        /// <returns></returns>
         public bool SaveEntete(String Client,String Signal,int Dbv,int Cbv,int Chv,String Remarques)
         {
             String query = "Insert Into Entête(Date,Client,Signal,[Détente Basse Vitesse]," +
                 "[Compression Basse Vitesse],[Compression Haute Vitesse],Remarques) Values" +
                 "(GETDATE(),'" + Client + "','" + Signal + "'," + Dbv + "," + Cbv + "," + Chv + ",'" + Remarques + "')";
+
             if (this.OpenConnexion(connexionBanc) == true)
             {
                 SqlCommand cmd = new SqlCommand(query, connexionBanc);
@@ -99,6 +110,15 @@ namespace TransfertBDD
                 return true;
             }
             return false;
+        }
+
+        public void SaveData(String[] datas, int ID, SqlConnection connexion)
+        {
+            String query = "Insert Into Données(ID,position,force,vitesse,acceleration) Values(" +
+                ID + "," + datas[0] + "," + datas[1] + "," + datas[2] + "," + datas[3] + ")";
+
+            SqlCommand cmd = new SqlCommand(query, connexion);
+            cmd.ExecuteNonQuery();
         }
     }
 }

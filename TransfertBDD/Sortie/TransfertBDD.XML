@@ -21,6 +21,14 @@
             le contenu de cette méthode avec l'éditeur de code.
             </summary>
         </member>
+        <member name="M:TransfertBDD.Functions.CheckClient(System.Data.DataSet,System.String)">
+            <summary>
+            Vérifie si le client existe déjà dans la BDD
+            </summary>
+            <param name="MyDataSet"></param>
+            <param name="ClientName"></param>
+            <returns></returns>
+        </member>
         <member name="M:TransfertBDD.Program.Main">
             <summary>
             Point d'entrée principal de l'application.
@@ -39,12 +47,18 @@
             <param name="FileName"></param>
             <returns> tableau de String correspondant aux lignes du fichier.txt</returns>
         </member>
-        <member name="M:TransfertBDD.ReadFileHelper.ExtractClient(System.String[])">
+        <member name="M:TransfertBDD.ReadFileHelper.ExtractClient">
             <summary>
             Extrait le nom du client
             </summary>
-            <param name="content"></param>
             <returns> un string : le nom du client</returns>
+        </member>
+        <member name="M:TransfertBDD.ReadFileHelper.ExtractionValeurs(System.Int32)">
+            <summary>
+            Extraction des valeurs qui nous interessent
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
         </member>
         <member name="M:TransfertBDD.SQLHelper.OpenConnexion(System.Data.SqlClient.SqlConnection)">
             <summary>
@@ -70,6 +84,18 @@
             <summary>
             Remplit le Dataset avec les données clients de la BDD Connexion Client
             </summary>
+        </member>
+        <member name="M:TransfertBDD.SQLHelper.SaveEntete(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Enregistre les données de l'entête dans la BDD Banc Hydraulique
+            </summary>
+            <param name="Client"></param>
+            <param name="Signal"></param>
+            <param name="Dbv"></param>
+            <param name="Cbv"></param>
+            <param name="Chv"></param>
+            <param name="Remarques"></param>
+            <returns></returns>
         </member>
         <member name="T:TransfertBDD.Properties.Resources">
             <summary>

@@ -9,6 +9,9 @@ namespace TransfertBDD
 {
     class ReadFileHelper
     {
+        #region variable
+        public string[] content;
+        #endregion
 
         /// <summary>
         /// Selectionne tous les fichiers .txt contenus dans un repertoire donné.
@@ -31,18 +34,16 @@ namespace TransfertBDD
         /// </summary>
         /// <param name="FileName"></param>
         /// <returns> tableau de String correspondant aux lignes du fichier.txt</returns>
-        public string[] Read(String FileName)
+        public void Read(String FileName)
         {
-            string[] content = System.IO.File.ReadAllLines(Properties.Settings.Default.FilesRepository + "\\" + FileName); //  \\ -> \   car \ est une séquence d'échappement
-            return content;
+            content = System.IO.File.ReadAllLines(Properties.Settings.Default.FilesRepository + "\\" + FileName); //  \\ -> \   car \ est une séquence d'échappement
         }
 
         /// <summary>
         /// Extrait le nom du client
         /// </summary>
-        /// <param name="content"></param>
         /// <returns> un string : le nom du client</returns>
-        public string ExtractClient(string[] content)
+        public string ExtractClient()
         {
             string name=null;
             string[] tempo = content[1].Split('\t');
@@ -54,6 +55,25 @@ namespace TransfertBDD
                 i++;
             }
             return name;
+        }
+
+        /// <summary>
+        /// Extraction des valeurs qui nous interessent
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public String[] ExtractionValeurs(int index)
+        {
+            String[] details;
+            String[] valeurs = new string[4];
+
+            details = content[index].Split('\t');
+
+                valeurs[0] = details[7]; // position
+                valeurs[1] = details[8]; // Force.Vérin
+                valeurs[2] = details[17]; // Vitesse cal
+                valeurs[3] = details[18]; // Accélération
+            return valeurs;
         }
     }
 }
