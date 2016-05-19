@@ -112,6 +112,12 @@ namespace TransfertBDD
             return false;
         }
 
+        /// <summary>
+        /// Enregistre les données dans la BDD (nécessite que la connexion soit deja établie)
+        /// </summary>
+        /// <param name="datas"></param>
+        /// <param name="ID"></param>
+        /// <param name="connexion"></param>
         public void SaveData(String[] datas, int ID, SqlConnection connexion)
         {
             String query = "Insert Into Données(ID,position,force,vitesse,acceleration) Values(" +
@@ -119,6 +125,25 @@ namespace TransfertBDD
 
             SqlCommand cmd = new SqlCommand(query, connexion);
             cmd.ExecuteNonQuery();
+        }
+
+        public int RecoverID(String Client,String Signal,float Dbv,float Cbv,float Chv)
+        {
+            int ID=0;
+
+            String query = "Select ID From Entête WHere (Client='" + Client + "') AND (Signal='" + Signal + "') AND ([Détente Basse Vitesse]= " + Dbv +
+                ") AND ([Compression Basse Vitesse]=" + Cbv + ") AND ([Compression Haute Vitesse]=" + Chv + ")";
+
+            if (this.OpenConnexion(connexionBanc) == true)
+            {
+                SqlCommand cmd = new SqlCommand(query, connexionBanc);
+                //SqlDataReader reader = cmd.ExecuteReader();
+                ID = (int)cmd.ExecuteScalar();
+                this.CloseConnexion(connexionBanc);
+                return ID;
+            }
+            return ID;
+
         }
     }
 }

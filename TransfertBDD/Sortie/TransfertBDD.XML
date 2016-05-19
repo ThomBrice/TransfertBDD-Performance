@@ -97,6 +97,14 @@
             <param name="Remarques"></param>
             <returns></returns>
         </member>
+        <member name="M:TransfertBDD.SQLHelper.SaveData(System.String[],System.Int32,System.Data.SqlClient.SqlConnection)">
+            <summary>
+            Enregistre les données dans la BDD (nécessite que la connexion soit deja établie)
+            </summary>
+            <param name="datas"></param>
+            <param name="ID"></param>
+            <param name="connexion"></param>
+        </member>
         <member name="T:TransfertBDD.Properties.Resources">
             <summary>
               Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.

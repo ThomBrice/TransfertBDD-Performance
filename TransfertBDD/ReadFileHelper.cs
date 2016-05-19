@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 
 namespace TransfertBDD
 {
@@ -21,10 +19,16 @@ namespace TransfertBDD
         {
             DirectoryInfo MyRepository = new DirectoryInfo(Properties.Settings.Default.FilesRepository);
             FileInfo[] MyFile = MyRepository.GetFiles("*.txt");
+            List<FileInfo> test = new List<FileInfo>();
             List<String> List = new List<string>();
             foreach (var file in MyFile)
             {
-                List.Add(file.Name);
+                test.Add(file);
+            }
+            test = test.OrderByDescending(f=>f.CreationTime).ToList();
+            foreach (var file in test)
+            {
+                List.Add(file.ToString());
             }
             return List;
         }
