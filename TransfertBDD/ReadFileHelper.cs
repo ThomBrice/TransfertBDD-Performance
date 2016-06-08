@@ -11,27 +11,6 @@ namespace TransfertBDD
         public string[] content;
         #endregion
 
-        /// <summary>
-        /// Selectionne tous les fichiers .txt contenus dans un repertoire donné.
-        /// </summary>
-        /// <returns> Une liste de string qui sont les noms des fichiers</returns>
-        public List<String> FindFiles()
-        {
-            DirectoryInfo MyRepository = new DirectoryInfo(Properties.Settings.Default.FilesRepository);
-            FileInfo[] MyFile = MyRepository.GetFiles("*.txt");
-            List<FileInfo> test = new List<FileInfo>();
-            List<String> List = new List<string>();
-            foreach (var file in MyFile)
-            {
-                test.Add(file);
-            }
-            test = test.OrderByDescending(f=>f.CreationTime).ToList();
-            foreach (var file in test)
-            {
-                List.Add(file.ToString());
-            }
-            return List;
-        }
 
         /// <summary>
         /// Read each line of the file into a string array. Each element of the array is one line of the file.
@@ -40,25 +19,7 @@ namespace TransfertBDD
         /// <returns> tableau de String correspondant aux lignes du fichier.txt</returns>
         public void Read(String FileName)
         {
-            content = System.IO.File.ReadAllLines(Properties.Settings.Default.FilesRepository + "\\" + FileName); //  \\ -> \   car \ est une séquence d'échappement
-        }
-
-        /// <summary>
-        /// Extrait le nom du client
-        /// </summary>
-        /// <returns> un string : le nom du client</returns>
-        public string ExtractClient()
-        {
-            string name=null;
-            string[] tempo = content[1].Split('\t');
-            int i = 1;
-
-            while(i!= tempo.Length)
-            {
-                name += tempo[i] + " ";
-                i++;
-            }
-            return name;
+            content = System.IO.File.ReadAllLines(FileName); //  \\ -> \   car \ est une séquence d'échappement
         }
 
         /// <summary>
@@ -78,6 +39,17 @@ namespace TransfertBDD
                 valeurs[2] = details[17]; // Vitesse cal
                 valeurs[3] = details[18]; // Accélération
             return valeurs;
+        }
+
+        public int DetectionStart(String[] document)
+        {
+            int i = 0;
+
+            while (!(document[i][0].Equals('1') & document[i][1].Equals('\t')))
+            {
+                i++;
+            }
+            return i;
         }
     }
 }

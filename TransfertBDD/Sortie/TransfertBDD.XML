@@ -4,18 +4,18 @@
         <name>TransfertBDD</name>
     </assembly>
     <members>
-        <member name="F:TransfertBDD.Form1.components">
+        <member name="F:TransfertBDD.PagePrincipale.components">
             <summary>
             Variable nécessaire au concepteur.
             </summary>
         </member>
-        <member name="M:TransfertBDD.Form1.Dispose(System.Boolean)">
+        <member name="M:TransfertBDD.PagePrincipale.Dispose(System.Boolean)">
             <summary>
             Nettoyage des ressources utilisées.
             </summary>
             <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
         </member>
-        <member name="M:TransfertBDD.Form1.InitializeComponent">
+        <member name="M:TransfertBDD.PagePrincipale.InitializeComponent">
             <summary>
             Méthode requise pour la prise en charge du concepteur - ne modifiez pas
             le contenu de cette méthode avec l'éditeur de code.
@@ -29,16 +29,27 @@
             <param name="ClientName"></param>
             <returns></returns>
         </member>
+        <member name="F:TransfertBDD.PopUpClient.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TransfertBDD.PopUpClient.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TransfertBDD.PopUpClient.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="M:TransfertBDD.Program.Main">
             <summary>
             Point d'entrée principal de l'application.
             </summary>
-        </member>
-        <member name="M:TransfertBDD.ReadFileHelper.FindFiles">
-            <summary>
-            Selectionne tous les fichiers .txt contenus dans un repertoire donné.
-            </summary>
-            <returns> Une liste de string qui sont les noms des fichiers</returns>
         </member>
         <member name="M:TransfertBDD.ReadFileHelper.Read(System.String)">
             <summary>
@@ -46,12 +57,6 @@
             </summary>
             <param name="FileName"></param>
             <returns> tableau de String correspondant aux lignes du fichier.txt</returns>
-        </member>
-        <member name="M:TransfertBDD.ReadFileHelper.ExtractClient">
-            <summary>
-            Extrait le nom du client
-            </summary>
-            <returns> un string : le nom du client</returns>
         </member>
         <member name="M:TransfertBDD.ReadFileHelper.ExtractionValeurs(System.Int32)">
             <summary>

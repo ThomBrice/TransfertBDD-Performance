@@ -25,20 +25,7 @@ namespace TransfertBDD.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\cours\\M1\\Performance Suspension")]
-        public string FilesRepository {
-            get {
-                return ((string)(this["FilesRepository"]));
-            }
-            set {
-                this["FilesRepository"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Integrated Security=SSPI; Data Source=localhost; Initial Catalog=Performance Susp" +
-            "ension")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Integrated Security=SSPI; Data Source=localhost; Initial Catalog=Suspension")]
         public string StrConnClient {
             get {
                 return ((string)(this["StrConnClient"]));

@@ -60,7 +60,7 @@ namespace TransfertBDD
         /// <param name="client"></param>
         public void AddClient(String client)
         {
-            String query = "Insert Into Clients (Client) Values('" + client + "')";
+            String query = "Insert Into Client (Client) Values('" + client + "')"; // modifier Client ou ClientS selon les BDD
 
             if (this.OpenConnexion(connexionClient) == true)
             {
@@ -75,8 +75,8 @@ namespace TransfertBDD
         /// </summary>
         public void UpdateDataSetClient()
         {
-            String query = "Select * from Clients";
-
+            String query = "Select * from Client";  // modifier Client ou ClientS selon les BDD
+            MyDataSet.Clear();
             if (this.OpenConnexion(connexionClient) == true)
             {
                 SqlCommand cmd = new SqlCommand(query, connexionClient);
@@ -98,8 +98,8 @@ namespace TransfertBDD
         /// <returns></returns>
         public bool SaveEntete(String Client,String Signal,int Dbv,int Cbv,int Chv,String Remarques)
         {
-            String query = "Insert Into Entête(Date,Client,Signal,[Détente Basse Vitesse]," +
-                "[Compression Basse Vitesse],[Compression Haute Vitesse],Remarques) Values" +
+            String query = "Insert Into Entête(Date,Client,Signal,[DBV]," +
+                "[CBV],[CHV],Remarques) Values" +
                 "(GETDATE(),'" + Client + "','" + Signal + "'," + Dbv + "," + Cbv + "," + Chv + ",'" + Remarques + "')";
 
             if (this.OpenConnexion(connexionBanc) == true)
@@ -131,8 +131,8 @@ namespace TransfertBDD
         {
             int ID=0;
 
-            String query = "Select ID From Entête WHere (Client='" + Client + "') AND (Signal='" + Signal + "') AND ([Détente Basse Vitesse]= " + Dbv +
-                ") AND ([Compression Basse Vitesse]=" + Cbv + ") AND ([Compression Haute Vitesse]=" + Chv + ")";
+            String query = "Select ID From Entête WHere (Client='" + Client + "') AND (Signal='" + Signal + "') AND ([DBV]= " + Dbv +
+                ") AND ([CBV]=" + Cbv + ") AND ([CHV]=" + Chv + ")";
 
             if (this.OpenConnexion(connexionBanc) == true)
             {

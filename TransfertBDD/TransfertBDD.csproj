@@ -102,32 +102,28 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>database-icon.ico</ApplicationIcon>
+    <ApplicationIcon>Graphicloads-100-Flat-Reload.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.BonusSkins.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\programmes\DevExpress\Components\Bin\Framework\DevExpress.BonusSkins.v15.2.dll</HintPath>
+      <HintPath>..\..\..\..\programmes\DevExpress\DevExpress 14.1\Bin\Framework\DevExpress.BonusSkins.v14.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\programmes\DevExpress\Components\Bin\Framework\DevExpress.Data.v15.2.dll</HintPath>
+      <HintPath>..\..\..\..\programmes\DevExpress\DevExpress 14.1\Bin\Framework\DevExpress.Data.v14.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\programmes\DevExpress\Components\Bin\Framework\DevExpress.Utils.v15.2.dll</HintPath>
+      <HintPath>..\..\..\..\programmes\DevExpress\DevExpress 14.1\Bin\Framework\DevExpress.Utils.v14.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v15.2.UI, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\programmes\DevExpress\Components\Bin\Framework\DevExpress.Utils.v15.2.UI.dll</HintPath>
+      <HintPath>..\..\..\..\programmes\DevExpress\DevExpress 14.1\Bin\Framework\DevExpress.XtraEditors.v14.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\programmes\DevExpress\Components\Bin\Framework\DevExpress.XtraEditors.v15.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\programmes\DevExpress\Components\Bin\Framework\DevExpress.XtraLayout.v15.2.dll</HintPath>
+      <HintPath>..\..\..\..\programmes\DevExpress\DevExpress 14.1\Bin\Framework\DevExpress.XtraLayout.v14.1.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -142,20 +138,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Page Principale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Page Principale.Designer.cs">
+      <DependentUpon>Page Principale.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions.cs" />
+    <Compile Include="PopUpClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpClient.Designer.cs">
+      <DependentUpon>PopUpClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadFileHelper.cs" />
+    <Compile Include="Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
     <Compile Include="SQLHelper.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Page Principale.resx">
+      <DependentUpon>Page Principale.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PopUpClient.resx">
+      <DependentUpon>PopUpClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -175,6 +186,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
     <None Include="TransfertBDD_CléTemporaire.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="database-icon.ico" />
+    <Content Include="Graphicloads-100-Flat-Reload.ico" />
     <Content Include="Icon1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
