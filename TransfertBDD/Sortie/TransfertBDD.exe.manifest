@@ -722,7 +722,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>phVz0pcqNLXBYwRfgdNXCTGUJMCzaa4yj1N8aE6rCsk=</dsig:DigestValue>
+        <dsig:DigestValue>tYze3CA9VXTQLYq+Tdv+LlCjdmfxQU1Vq569x6uQGmU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -753,13 +753,13 @@
       <dsig:DigestValue>VT5YQgA5CY9Sq+vPjRUHcEk7FZvl5nTFwUNmqQacgy8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TransfertBDD.exe.config" size="1207">
+  <file name="TransfertBDD.exe.config" size="1219">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>7oOD8qegURBJOVKYrPV+BiZW+TLMBaDZRuZySzY1f2A=</dsig:DigestValue>
+      <dsig:DigestValue>0t3HNiYk4gJL1ZRFIkfJZsFlx28as946VUPgUJSFJ+o=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

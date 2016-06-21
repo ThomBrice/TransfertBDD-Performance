@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="StrConnClient" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Integrated Security=SSPI; Data Source=localhost; Initial Catalog=Suspension</Value>
+      <Value Profile="(Default)">Integrated Security=SSPI; Data Source=localhost; Initial Catalog=Performance Suspension</Value>
     </Setting>
     <Setting Name="StrConnDonn" Type="System.String" Scope="User">
       <Value Profile="(Default)">Integrated Security=SSPI; Data Source=localhost; Initial Catalog=Banc Hydraulique</Value>

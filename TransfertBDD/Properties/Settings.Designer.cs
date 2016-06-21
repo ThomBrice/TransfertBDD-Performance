@@ -25,7 +25,8 @@ namespace TransfertBDD.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Integrated Security=SSPI; Data Source=localhost; Initial Catalog=Suspension")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Integrated Security=SSPI; Data Source=localhost; Initial Catalog=Performance Susp" +
+            "ension")]
         public string StrConnClient {
             get {
                 return ((string)(this["StrConnClient"]));
